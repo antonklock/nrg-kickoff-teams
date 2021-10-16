@@ -7,10 +7,12 @@ const generateGroups = () => {
     const groups = grouper(shuffle(names, 0), 6);
 
     for(let i = 0; i < groups.length; i++){
+        // GROUP HEADER
         const header = document.createElement('h2');
-        header.innerHTML = 'Group ' + groups.indexOf(groups[i]);
+        header.innerHTML = 'Group ' + (i + 1);
         document.querySelector('#lists').append(header);
-
+        
+        //GROUP LIST
         const ul = document.createElement('ul');
         ul.setAttribute('id', 'group' + i)
         document.querySelector('#lists').append(ul);
@@ -21,8 +23,6 @@ const generateGroups = () => {
             document.querySelector('#group' + i).append(li);
         }
     }
-
-    console.log(groups);
 }
 
 generateGroups();
