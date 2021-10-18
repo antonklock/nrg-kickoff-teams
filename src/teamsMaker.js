@@ -1,10 +1,17 @@
-import names from './names.js';
+import {names, leads} from './names.js';
 import shuffle from './shuffler.js';
 import grouper from './grouper.js';
 
+const seed = 2;
+const groupSize = 7;
+
 const generateGroups = () => {
 
-    const groups = grouper(shuffle(names, 0), 6);
+const groups = grouper(shuffle(names, seed), groupSize);
+
+    for(let i = 0; i < leads.length; i++){
+        groups[i].unshift(leads[i]);
+    }
 
     for(let i = 0; i < groups.length; i++){
         // GROUP HEADER
@@ -17,11 +24,13 @@ const generateGroups = () => {
         ul.setAttribute('id', 'group' + i)
         document.querySelector('#lists').append(ul);
 
-        for(let a = 0; a < groups[a].length; a++){
+        for(let a = 0; a < groups[i].length; a++){
             const li = document.createElement('li');
             li.innerHTML = groups[i][a];
             document.querySelector('#group' + i).append(li);
         }
+
+        document.querySelector('#group' + i).append('Antal: ' + (groups[i].length).toString());
     }
 }
 
