@@ -2,16 +2,16 @@ import {names, leads} from './names.js';
 import shuffle from './shuffler.js';
 import grouper from './grouper.js';
 
-const seed = 2;
-const groupSize = 7;
+const seed = 4;
+const groupSize = 6;
 
 const generateGroups = () => {
 
 const groups = grouper(shuffle(names, seed), groupSize);
 
-    for(let i = 0; i < leads.length; i++){
-        groups[i].unshift(leads[i]);
-    }
+    // for(let i = 0; i < leads.length; i++){
+    //     groups[i].unshift(leads[i]);
+    // }
 
     for(let i = 0; i < groups.length; i++){
         // GROUP HEADER
